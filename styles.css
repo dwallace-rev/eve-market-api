@@ -1,0 +1,22 @@
+body{
+    background-color: rgb(180, 180, 180);
+    padding-top: 2%;
+    padding-left: 8%;
+}
+
+#displayID{
+    max-width: 55px;
+}
+
+#resultsTable{
+    min-width: 300px;
+    column-gap: 50px;
+    border: steelblue, solid, 2px;
+}
+
+.td {text-align: right;}
+.th {text-align: center;}
+
+#getPricesBtn{
+    visibility: hidden;
+}
