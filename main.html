@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Monster Encounters!</title>
+</head>
+<body>
+    <button onclick="getMonsters()">Get Monster List</button>
+    
+</body>
+
+<script>
+    let proxy = "https://protected-dawn-60222.herokuapp.com/"
+    let monCount = 10;
+    let skip = 0;
+    const monsterUrl = `${proxy}https://app.pixelencounter.com/odata/basic/monsterdetails?$top=${monCount}&$skip=${skip}`
+    
+    async function getMonsters(){
+        const monsters = await fetch(monsterUrl);
+        console.log(monsters.json)
+        console.log(monsters.url);
+    }
+        
+    
+
+</script>
+</html>
