@@ -52,6 +52,7 @@
     }
 
     async function getPrices(){
+        getPricesBtn.style.visibility = "hidden";
         const result = {"buyPrice": 0, "sellPrice": 0}
         searchId = displayID.value;
         const httpResponse = await fetch(`${url1}${searchId}${url2}`);
@@ -63,11 +64,20 @@
         const margin = result.buyPrice - result.sellPrice;
         console.log(result);
 
+        const formatting = ` style = "text-align: right; padding-right: 10px;"`;
+
+        buyFormatted = result.buyPrice.toLocaleString(undefined,
+        {'minimumFractionDigits':2,'maximumFractionDigits':2});
+        sellFormatted = result.sellPrice.toLocaleString(undefined,
+        {'minimumFractionDigits':2,'maximumFractionDigits':2});
+        marginFormatted = margin.toLocaleString(undefined,
+        {'minimumFractionDigits':2,'maximumFractionDigits':2});
+
         resultsTable.innerHTML += `<tr>
             <td style="padding-right:10px;">${searchedName}</td>
-            <td style="padding-right:10px;">${result.buyPrice.toLocaleString()}</td>
-            <td style="padding-right:10px;">${result.sellPrice.toLocaleString()}</td>
-            <td style="color: darkgreen; font-weight:700;">${margin.toLocaleString()}</td>
+            <td${formatting}>${buyFormatted}</td>
+            <td${formatting}>${sellFormatted}</td>
+            <td style="color: darkgreen; font-weight:700; text-align: right;">${marginFormatted}</td>
             </tr>`;
 
         searchedName = "";
